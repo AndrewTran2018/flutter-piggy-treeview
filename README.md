@@ -11,4 +11,4 @@ How to use?
 3. See AccountList.dart for the example detail
 
 
-<img src="https://user-images.githubusercontent.com/31315360/35859742-cea790e0-0b73-11e8-81dc-5d0ffbb04229.png" width="400" height="790">
+<img src="https://user-images.githubusercontent.com/31315360/35859742-cea790e0-0b73-11e8-81dc-5d0ffbb04229.png" width="540" height="960">
