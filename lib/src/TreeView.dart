@@ -10,10 +10,9 @@ typedef void EditNodeCallback<T>(T node);
 typedef void ManageCallback<T>(T node);
 
 ///
-///  T: any data passed to the node. Expect a json-based structure
+///  T: any data passed to the node
 ///
-///
-///
+
 class TreeNodeData<T> {
   T _data;
   Widget _bindedWidget;

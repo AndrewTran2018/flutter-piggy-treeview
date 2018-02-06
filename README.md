@@ -1,6 +1,7 @@
-# piggy
+# piggy treeview
 
 A Treeview component for Flutter.
+Featuring expand/collapse all, search, hilite, checkbox.
 
 ## Getting Started
 
