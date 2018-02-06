@@ -10,4 +10,4 @@ How to use?
 3. See AccountList.dart for the example detail.
 
 
-<img src="/screenshot/Screenshot_1517923304.png" width="540" height="960">
+<img src="https://raw.githubusercontent.com/AndrewTran2018/flutter-piggy-treeview/screenshot/Screenshot_1517923304.png" width="540" height="960">
