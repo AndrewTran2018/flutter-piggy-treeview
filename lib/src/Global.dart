@@ -1,17 +1,16 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+
 class Constants {
  
-  // Array length of main tabs
   static const VIEW_PADDING = 15.0;
   static const LIST_ITEM_INDENT = 16.0;
   static const VERTICAL_PADDING = 15.0;
   static const HORIZONTAL_PADDING = 48.0;
   static const VERTICAL_PADDING_FORM = 10.0;
   static const HORIZONTAL_PADDING_FORM = 8.0;
-
-  // All string constan
+}
 
 // Stack emulator
 class StackEmul<T> {
@@ -39,3 +38,5 @@ class StackEmul<T> {
 
   int get count=> _internalList?.length;
 }
+
+
