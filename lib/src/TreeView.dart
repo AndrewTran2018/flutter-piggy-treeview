@@ -135,7 +135,7 @@ class TreeNodeData<T> {
       cursor = cursor.parent;
     } while (cursor != null);
 
-    throw new StateError("Cấu trúc cây không hợp lệ");
+    throw new StateError("Invalid tree structure.");
   }
 
   TreeNodeData<T> createChild(String title, String subTitle, String id, T data,
