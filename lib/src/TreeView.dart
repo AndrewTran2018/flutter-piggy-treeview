@@ -286,9 +286,9 @@ class TreeNodeState extends State<TreeNode> {
         onExpansionChanged: (bool value) {
           currentNode.expanded = value;
         },
-        key: new Key(Util.getKey()),
+        key: new Key(currentNode.id)),
         title: new CustomListTile(
-          key: new Key(Util.getKey()),
+          key: new Key(currentNode.id),
           leading: new Checkbox(
               value: currentNode.isChecked,
               onChanged: (bool value) {
