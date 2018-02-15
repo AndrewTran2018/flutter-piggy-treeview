@@ -33,7 +33,6 @@ class AccountNodeData extends TreeNodeData<Account> {
   Iterable operator |(String textToSearch) sync* {
     String cat = "${data.username} ${data.email} ${data.type} ${data.phone}";
     if (cat.toLowerCase().indexOf(textToSearch.toLowerCase()) > -1) {
-      expanded = true;
       hilited = true;
       yield this;
     }

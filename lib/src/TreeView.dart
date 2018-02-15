@@ -10,7 +10,7 @@ typedef void EditNodeCallback<T>(T node);
 typedef void ManageCallback<T>(T node);
 
 ///
-///  T: any data passed to the node
+///  T: any data passed to the node.
 ///
 
 class TreeNodeData<T> {
@@ -135,7 +135,7 @@ class TreeNodeData<T> {
       cursor = cursor.parent;
     } while (cursor != null);
 
-    throw new StateError("Invalid tree structure.");
+    throw new StateError("Cấu trúc cây không hợp lệ");
   }
 
   TreeNodeData<T> createChild(String title, String subTitle, String id, T data,
@@ -146,7 +146,7 @@ class TreeNodeData<T> {
   }
 
   String toString() =>
-      "title: id=${title} id:${id} subTittle:${subTitle} isExpanded:${isExpanded} checked: $isChecked";
+      "title: id=$title id:$id subTittle:$subTitle isExpanded:$isExpanded checked: $isChecked";
 }
 
 class TreeNode extends StatefulWidget {
@@ -202,7 +202,7 @@ class TreeNodeState extends State<TreeNode> {
     _lstNodes = widget._nodeData.hasChildren
         ? widget._nodeData.children.map((TreeNodeData subNode) {
             TreeNode treeNode = new TreeNode(widget._treeComponent, subNode,
-                key: new Key(subNode.id));
+                key: new Key(Util.getKey()));
             treeNode.onSelectNode = widget.onSelectNode;
             treeNode.onEditNode = widget.onEditNode;
             treeNode.onManage = widget.onManage;
@@ -254,7 +254,7 @@ class TreeNodeState extends State<TreeNode> {
     return new Container(
         padding: new EdgeInsets.only(left: Constants.LIST_ITEM_INDENT),
         child: new CustomListTile(
-          key: new Key(currentNode.id),
+          key: new Key(Util.getKey()),
           leading: new Checkbox(
               value: currentNode.isChecked,
               onChanged: (bool value) {
@@ -281,12 +281,13 @@ class TreeNodeState extends State<TreeNode> {
 
   Widget buildExpandedNode(TreeNodeData currentNode) {
     _wExpand = new CustomExpansionTile(
-        initiallyExpanded:
-            currentNode.parent == null ? true : currentNode.isExpanded,
+        initiallyExpanded: currentNode.parent == null
+            ? currentNode.isExpanded
+            : widget._treeComponent.expandIt,
         onExpansionChanged: (bool value) {
           currentNode.expanded = value;
         },
-        key: new Key(currentNode.id)),
+        key: new Key(Util.getKey()),
         title: new CustomListTile(
           key: new Key(currentNode.id),
           leading: new Checkbox(
@@ -326,6 +327,7 @@ class TreeNodeState extends State<TreeNode> {
 class TreeView extends StatefulWidget {
   List<TreeNodeData> _roots;
   Widget _header;
+  bool expandIt;
 
   NodeCallback onSelectNode;
   NodeCallback onHiliteNode;
@@ -416,7 +418,7 @@ class TreeViewState extends State<TreeView> {
     _lstNodes = widget._roots?.length > 0
         ? widget._roots.map((TreeNodeData root) {
             TreeNode treeNode =
-                new TreeNode(widget, root, key: new Key(root.id));
+                new TreeNode(widget, root, key: new Key(Util.getKey()));
             treeNode.onSelectNode = widget.onSelectNode;
             treeNode.onEditNode = widget.onEditNode;
             treeNode.onManage = widget.onManage;

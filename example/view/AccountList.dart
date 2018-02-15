@@ -69,11 +69,13 @@ class AccountListState extends BasicPageState {
   }
 
   void _onCollapseAll() {
-    _treeComponent.toggle(false);
+    _treeComponent.expandIt = false;
+    _treeComponent.toggle(_treeComponent.expandIt);
   }
 
   void _onExpandAll() {
-    _treeComponent.toggle(true);
+    _treeComponent.expandIt = true;
+    _treeComponent.toggle(_treeComponent.expandIt);
   }
 
   void _onAddNew() {
@@ -81,7 +83,7 @@ class AccountListState extends BasicPageState {
   }
 
   void _onDelete() {
-    Util.alert(context, content: "Delete");
+    Util.alert(context, content: "Xóa");
   }
 
   void _onSearch(String textToSearch) {
@@ -104,7 +106,9 @@ class AccountListState extends BasicPageState {
       _mapHilitedNodes[element.id] = element;
     });
 
-    _treeComponent.expandOnTo(_mapHilitedNodes);
+    _treeComponent.broadcast(_mapHilitedNodes);
+
+    if (_mapHilitedNodes.length > 0) _onExpandAll();
 
     setState(() {
       widget.isLoading = false;
@@ -162,7 +166,7 @@ class AccountListState extends BasicPageState {
 
     initListItems();
 
-    // Call API to get the list of accounts
+    // Call API to get the list of shops
     Future<List> future = _getAccountList();
 
     future.then((value) {
@@ -171,6 +175,7 @@ class AccountListState extends BasicPageState {
             key: new Key("PiggyHeader"),
             searchCallback: _onSearch,
           ));
+      _treeComponent.expandIt = false;
       _treeComponent.onSelectNode = _onSelectNode;
       _treeComponent.onEditNode = _onEdit;
       _treeComponent.onHiliteNode = _onHiliteNode;
@@ -181,7 +186,7 @@ class AccountListState extends BasicPageState {
   }
 
   Future<Null> _displayLongPressGuide() async {
-    showInSnackBar("Press long on an item to edit.");
+    showInSnackBar("Nhấn và giữ lâu một chút trên một tài khoản để sửa.");
   }
 
   @override
@@ -268,8 +273,7 @@ class AccountListState extends BasicPageState {
       for (AccountNodeData account in _lstTreeNode) {
         String cat =
             "${account.data.username} ${account.data.email} ${account.data.type} ${account.data.phone}";
-        if (cat.indexOf(textToSearch) > -1) {
-          account.expanded = true;
+        if (cat.toLowerCase().indexOf(textToSearch.toLowerCase()) > -1) {
           account.hilited = true;
           yield account;
         }
