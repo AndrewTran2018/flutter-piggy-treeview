@@ -83,7 +83,7 @@ class AccountListState extends BasicPageState {
   }
 
   void _onDelete() {
-    Util.alert(context, content: "Xóa");
+    Util.alert(context, content: "Delete");
   }
 
   void _onSearch(String textToSearch) {
@@ -186,7 +186,7 @@ class AccountListState extends BasicPageState {
   }
 
   Future<Null> _displayLongPressGuide() async {
-    showInSnackBar("Nhấn và giữ lâu một chút trên một tài khoản để sửa.");
+    showInSnackBar("Press long on an account to edit.");
   }
 
   @override

@@ -26,7 +26,7 @@ class AccountNodeData extends TreeNodeData<Account> {
   @override
   String toString() {
     return "${super.toString()}"
-        "\nfullpath:${data.full_path} thuộc về:${data.parent_id}";
+        "\nfullpath:${data.full_path} belongs to:${data.parent_id}";
   }
 
   @override

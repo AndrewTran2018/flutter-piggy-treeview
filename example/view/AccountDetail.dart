@@ -33,7 +33,7 @@ class AccountDetailState extends BasicPageState {
 
     Widget requiredHint = new Container(
         padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
-        child: new Text('Trường có dấu * là yêu cầu phải nhập giá trị.',
+        child: new Text('* means the field is required',
             style: Theme
                 .of(context)
                 .textTheme
@@ -42,9 +42,9 @@ class AccountDetailState extends BasicPageState {
 
     Widget inputUserName = new TextFormField(
       decoration: new InputDecoration(
-        hintText: "Nhập tên tài khoản",
+        hintText: "Type in account name",
         hintStyle: new TextStyle(color: Colors.black26),
-        labelText: "Tên tài khoản *",
+        labelText: "Account Name *",
         labelStyle: new TextStyle(color: Colors.black),
         errorStyle: new TextStyle(color: Colors.red),
       ),
@@ -57,7 +57,7 @@ class AccountDetailState extends BasicPageState {
 
     Widget inputEmail = new TextFormField(
       decoration: new InputDecoration(
-        hintText: "Nhập email nếu có",
+        hintText: "Email",
         hintStyle: new TextStyle(color: Colors.black26),
         labelText: "Email",
         labelStyle: new TextStyle(color: Colors.black),
@@ -72,9 +72,9 @@ class AccountDetailState extends BasicPageState {
 
     Widget inputPhone = new TextFormField(
       decoration: new InputDecoration(
-        hintText: "Nhập số điện thoại",
+        hintText: "Contact number",
         hintStyle: new TextStyle(color: Colors.black26),
-        labelText: "Số điện thoại *",
+        labelText: "Contact Number *",
         labelStyle: new TextStyle(color: Colors.black),
         errorStyle: new TextStyle(color: Colors.red),
       ),
@@ -89,7 +89,7 @@ class AccountDetailState extends BasicPageState {
       return new Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          const Text("Kiểu tài khoản"),
+          const Text("Account type"),
           new DropdownButton<String>(
             value: isNull(theWidget.currentAccount.data.type)
                 ? ""
@@ -103,8 +103,8 @@ class AccountDetailState extends BasicPageState {
               return new DropdownMenuItem<String>(
                 value: value,
                 child: new Text(value == 'master' || value == "root"
-                    ? "Đại lý"
-                    : 'Người chơi'),
+                    ? "Master"
+                    : 'Slaver'),
               );
             }).toList(),
           ),
@@ -118,7 +118,7 @@ class AccountDetailState extends BasicPageState {
       return new Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          const Text("Đại lý cấp trên"),
+          const Text("Direct master"),
           new DropdownButton<String>(
             value: isNull(theWidget.currentAccount.data.parent_id)
                 ? ""
@@ -149,11 +149,11 @@ class AccountDetailState extends BasicPageState {
       padding: new EdgeInsets.symmetric(vertical: Constants.VERTICAL_PADDING),
       child:
           new Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
-        new RaisedButton(child: const Text("Lưu"), onPressed: _onDone),
+        new RaisedButton(child: const Text("Save"), onPressed: _onDone),
         const SizedBox(
           width: 12.0,
         ),
-        new RaisedButton(child: const Text("Thoát"), onPressed: _onCancel)
+        new RaisedButton(child: const Text("Cancel"), onPressed: _onCancel)
       ]),
     );
 
