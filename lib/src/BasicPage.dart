@@ -76,7 +76,7 @@ class BasicPageState extends State<BasicPage> {
         if (action == ActionTypes.delete)
           lstActions.add(new IconButton(
             icon: const Icon(Icons.delete),
-            tooltip: 'Xóa',
+            tooltip: 'Delete',
             onPressed: widget.enableDelete ? widget.onDelete : null,
           ));
         else if (action == ActionTypes.search)
