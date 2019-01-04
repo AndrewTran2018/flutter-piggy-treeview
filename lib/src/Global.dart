@@ -11,7 +11,14 @@ class Constants {
   static const VERTICAL_PADDING_FORM = 10.0;
   static const HORIZONTAL_PADDING_FORM = 8.0;
 }
-
+class Util {
+  static String getKey() {
+    List<String> strings = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    strings.shuffle();
+    String randId = strings.join("");
+    return randId;
+  }
+}
 // Stack emulator
 class StackEmul<T> {
   List<T> _internalList;
