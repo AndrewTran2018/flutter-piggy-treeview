@@ -31,5 +31,6 @@ You will now have the following imports available to you:
 ```dart
 import 'package:piggy/src/Global.dart';
 import 'package:piggy/src/BasicPage.dart';
+import 'package:piggy/src/SearchBar.dart';
 import 'Package:piggy/src/TreeView.dart';
 ```
