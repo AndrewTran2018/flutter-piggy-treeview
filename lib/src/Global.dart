@@ -18,6 +18,35 @@ class Util {
     String randId = strings.join("");
     return randId;
   }
+
+  static Future<dynamic> alert(BuildContext context,
+      {String title = "Thông báo",
+      String content = "Chi tiết thông báo",
+      bool allowCancel = false}) async {
+    var alert = new AlertDialog(
+      title: new Text(title),
+      content: new Text(content),
+      actions: <Widget>[
+        new FlatButton(
+          child: const Text('OK'),
+          onPressed: () {
+            Navigator.of(context).pop(true);
+          },
+        ),
+        allowCancel
+            ? new FlatButton(
+                child: const Text('Thôi'),
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+              )
+            : new Container()
+      ],
+    );
+
+    return await showDialog(
+        context: context, child: alert, barrierDismissible: false);
+  }
 }
 // Stack emulator
 class StackEmul<T> {
