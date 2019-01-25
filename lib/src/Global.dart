@@ -20,8 +20,8 @@ class Util {
   }
 
   static Future<dynamic> alert(BuildContext context,
-      {String title = "Thông báo",
-      String content = "Chi tiết thông báo",
+      {String title = "Notification",
+      String content = "Detail",
       bool allowCancel = false}) async {
     var alert = new AlertDialog(
       title: new Text(title),
@@ -35,7 +35,7 @@ class Util {
         ),
         allowCancel
             ? new FlatButton(
-                child: const Text('Thôi'),
+                child: const Text('Cancel'),
                 onPressed: () {
                   Navigator.of(context).pop(false);
                 },
